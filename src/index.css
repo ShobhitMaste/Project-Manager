@@ -256,7 +256,7 @@ a:hover {
   align-items: start;
   height: 91vh;
   overflow-y: scroll;
-  margin-right: 100%;
+  padding-right:100%;
 }
 
 .projectheading{

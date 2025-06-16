@@ -22,7 +22,7 @@ export default function App() {
 
   function handleSaveProject(title, description, dueDate) {
     setProjects((prevProjects) => {
-      let tempProjects = prevProjects;
+      const tempProjects = [...prevProjects];
       tempProjects.push({
         title,
         description,
@@ -34,7 +34,7 @@ export default function App() {
       return tempProjects;
     });
     setAddingProject(() => false);
-    setCurrentProject(() => projects.length - 1);
+    setCurrentProject(() => projects.length);
   }
 
   function handleProjectSelection(index) {
@@ -46,8 +46,26 @@ export default function App() {
   function handleAddingTasks(task) {
     console.log(projects);
     setProjects((prevProjects) => {
-      let tempProjects = prevProjects;
-      tempProjects[currentProject].tasks.unshift(task);
+      const tempProjects = [...prevProjects];
+      const updatedTasks = [...tempProjects[currentProject].tasks];
+      updatedTasks.push(task);
+      tempProjects[currentProject] = {
+        ...tempProjects[currentProject],
+        tasks: updatedTasks,
+      };
+      return tempProjects;
+    });
+  }
+
+  function handleTaskDeletion(taskIndex) {
+    setProjects((prevProjects) => {
+      const tempProjects = [...prevProjects];
+      const updatedTasks = [...tempProjects[currentProject].tasks];
+      updatedTasks.splice(taskIndex, 1);
+      tempProjects[currentProject] = {
+        ...tempProjects[currentProject],
+        tasks: updatedTasks,
+      };
       return tempProjects;
     });
   }
@@ -73,6 +91,7 @@ export default function App() {
             handleAddingTasks={handleAddingTasks}
             activeProject={currentProject}
             Projects={projects}
+            handleTaskDeletion={handleTaskDeletion}
           />
         )}
         {!addingProject && currentProject == -1 && (

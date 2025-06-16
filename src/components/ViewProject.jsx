@@ -3,9 +3,10 @@ export default function ViewProject({
   handleAddingTasks,
   Projects,
   activeProject,
+  handleTaskDeletion,
 }) {
   let project = Projects[activeProject];
-  const [task, setTask] = useState();
+  const [task, setTask] = useState("");
   function handleTaskInput(event) {
     setTask(event.target.value);
   }
@@ -35,7 +36,7 @@ export default function ViewProject({
       <h1>Tasks</h1>
       <form
         onSubmit={(e) => {
-            e.preventDefault();
+          e.preventDefault();
           if (task != "") handleAddingTasks(task);
           setTask(() => "");
         }}
@@ -52,7 +53,12 @@ export default function ViewProject({
             return (
               <li key={index}>
                 <p>{taskValue}</p>
-                <button className="buttonWithoutBG juslighttext">Clear</button>
+                <button
+                  onClick={() => handleTaskDeletion(index)}
+                  className="buttonWithoutBG juslighttext"
+                >
+                  Clear
+                </button>
               </li>
             );
           })}
