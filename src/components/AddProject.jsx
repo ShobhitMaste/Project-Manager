@@ -19,8 +19,10 @@ export default function AddProject({ onCancel, onSave }) {
       }
     >
       <div className="addProjectButtons">
-        <button onClick={onCancel}>Cancel</button>
-        <button type="submit">Save</button>
+        <button className="buttonWithoutBG" type="button" onClick={onCancel}>
+          Cancel
+        </button>
+        <button className="buttonWithBG"  type="submit">Save</button>
       </div>
       <div>
         <label>TITLE</label> <br />

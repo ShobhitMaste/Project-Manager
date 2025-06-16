@@ -36,7 +36,7 @@ a:hover {
   color: #535bf2;
 }
 
-button {
+.buttonWithBG {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -47,13 +47,29 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+.buttonWithBG:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.buttonWithBG:focus,
+.buttonWithBG:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.buttonWithoutBG{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;
+  cursor: pointer;
+  transition: text-decoration 0.25s;
+}
+.buttonWithoutBG:hover {
+  text-decoration: underline;
+}
+
 
 .logo{
   height:60px;
@@ -127,6 +143,12 @@ button:focus-visible {
   background-color:#242424;
 }
 
+.flex-start{
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+}
+
 .flex-left{
   display: flex;
   justify-content: start;
@@ -184,6 +206,7 @@ button:focus-visible {
   font-size: 14px;
   color-scheme: light;
   padding-right: 10px;
+  padding-left:10px;
 }
 
 
@@ -198,6 +221,7 @@ button:focus-visible {
   border: 0px;
   border-bottom: 3px solid rgb(162, 162, 162);
   font-size: 14px;
+  padding:10px;
 }
 
 .selectoneproject{
@@ -206,7 +230,106 @@ button:focus-visible {
 .selectoneproject img{
   background-color: transparent;
 }
+.selectoneproject h2{
+  margin:0;
+}
 
 .lightText{
   color: rgb(150, 147, 147);
+  margin-bottom: 45px;
 }
+
+.juslighttext{
+  color: rgb(150, 147, 147);
+}
+
+.right-gap{
+  margin-right:30px;
+}
+
+.projectbody{
+  width: 84%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 40px;
+  padding-top: 20px;
+  align-items: start;
+  height: 91vh;
+  overflow-y: scroll;
+  margin-right: 100%;
+}
+
+.projectheading{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px
+}
+
+
+.projectheading button{
+  background-color: white;
+  color: rgb(150, 147, 147);
+}
+
+.separator {
+  height: 3px;
+  background-color: rgb(185, 185, 185);
+  border: none;
+  border-radius: 50px;
+  width:100%
+}
+
+.margin-top-0{
+  margin-top: 0;
+  padding-top: 0;
+}
+.gap{
+  gap:20px;
+}
+.description{
+  font-size: 16px;
+}
+
+.tasks{
+  width: 60%;
+}
+
+.tasks input{
+  width: 60%;
+  height: 35px;
+  border: 0px;
+  border-bottom: 3px solid rgb(162, 162, 162);
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: #dcdcdc;
+  color:rgb(0, 0, 0);
+  font-size: 14px;
+  color-scheme: light;
+  padding-right: 10px;
+  padding-left:10px;
+}
+
+.taskbody{
+  margin-top: 25px;
+  border-radius: 8px;;
+  background-color: #f1f1f1;
+  width:100%;
+  margin-bottom: 90px;
+}
+
+.taskbody li{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+}
+
+.taskbody li button{
+  background-color: #f1f1f1;
+}
+
+
