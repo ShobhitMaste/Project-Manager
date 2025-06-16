@@ -4,13 +4,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-color: #333 #444; 
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 body{
   font-family: "Merriweather", serif;
@@ -60,7 +62,9 @@ button:focus-visible {
 .navbar{
   display:flex;
   justify-content: space-between;
-  background-color: #ffffff;
+  background: #F7971E;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color : black;
   align-items: center;
   padding: 0px 40px;
@@ -70,17 +74,20 @@ button:focus-visible {
   display: grid;
   grid-template-columns: 1fr 3.3fr;
   height: 100%;
+  color:black;
 }
 
 .sidebar{
   background-color: black;
   height: 91vh;
   width: 100%;
-  border-radius: 0px 15px 0px 0px;
-  padding: 20px 0 0 0px;
+  /* border-radius: 0px 15px 0px 0px; */
+  padding: 20px 0px 0px 0px;
   display: flex;
   align-items: start;
   flex-direction: column;
+  color:white;
+  overflow-y: scroll;
 }
 .shiftright{
   padding-left: 50px;;
@@ -105,8 +112,12 @@ button:focus-visible {
   margin-bottom: 20px;
   list-style-type: none;
   border-radius: 8px;
-
 }
+
+.sidebar li:last-child{
+  margin-bottom: 60px;
+}
+
 
 .sidebar li:hover{
   background-color:#242424;
@@ -120,6 +131,16 @@ button:focus-visible {
   display: flex;
   justify-content: start;
   align-items: flex-start;
+  flex-direction: column;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col{
   flex-direction: column;
 }
 
@@ -139,7 +160,8 @@ button:focus-visible {
 }
 
 .addProjectButtons button:nth-child(1){
-  background-color: #242424;
+  background-color: #ffffff;
+  color:black;
 }
 
 .addProjectButtons button:nth-child(2){
@@ -152,17 +174,39 @@ button:focus-visible {
 
 .addproject input{
   width: 100%;
-  height: 30px;
+  height: 35px;
   border: 0px;
   border-bottom: 3px solid rgb(162, 162, 162);
   border-radius: 5px;
   margin-top: 5px;
+  background-color: #dcdcdc;
+  color:rgb(0, 0, 0);
+  font-size: 14px;
+  color-scheme: light;
+  padding-right: 10px;
 }
 
+
 .addproject textarea{
+  background-color: #dcdcdc;
   width: 100%;
   height: 70px;
+  padding-right: 10px;
+  color:black;
   margin-top: 5px;
+  border-radius: 5px;
   border: 0px;
   border-bottom: 3px solid rgb(162, 162, 162);
+  font-size: 14px;
+}
+
+.selectoneproject{
+  transform: translate(0px, -80px);
+}
+.selectoneproject img{
+  background-color: transparent;
+}
+
+.lightText{
+  color: rgb(150, 147, 147);
 }

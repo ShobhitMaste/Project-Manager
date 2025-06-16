@@ -12,20 +12,15 @@ export default function AddProject({ onCancel, onSave }) {
   }
 
   return (
-    <div className="flex-left addproject">
+    <form
+      className="flex-left addproject"
+      onSubmit={() =>
+        onSave(projectInfo.title, projectInfo.description, projectInfo.dueDate)
+      }
+    >
       <div className="addProjectButtons">
         <button onClick={onCancel}>Cancel</button>
-        <button
-          onClick={() =>
-            onSave(
-              projectInfo.title,
-              projectInfo.description,
-              projectInfo.dueDate
-            )
-          }
-        >
-          Save
-        </button>
+        <button type="submit">Save</button>
       </div>
       <div>
         <label>TITLE</label> <br />
@@ -41,13 +36,17 @@ export default function AddProject({ onCancel, onSave }) {
       <div>
         <label>DESCRIPTION</label>
         <br />
-        <textarea name="description" onChange={handleInput}></textarea>
+        <textarea
+          name="description"
+          placeholder="Description Here"
+          onChange={handleInput}
+        ></textarea>
       </div>
       <div>
         <label>DUE DATE</label>
         <br />
         <input name="dueDate" type="date" onChange={handleInput} />
       </div>
-    </div>
+    </form>
   );
 }

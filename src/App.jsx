@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import AddProject from "./components/AddProject.jsx";
+import ViewProject from "./components/ViewProject.jsx"
+import SelectOneProject from "./components/SelectOneProject.jsx";
 import { useState } from "react";
 
 export default function App() {
@@ -31,12 +33,15 @@ export default function App() {
       });
       return tempProjects;
     });
-
+    setAddingProject(() => false);
     setCurrentProject(() => projects.length - 1);
   }
 
   function handleProjectSelection(index) {
-    setCurrentProject(() => index);
+    if(addingProject){
+      alert("save Draft or click Cancel");
+    } else
+      setCurrentProject(() => index);
   }
 
   return (
@@ -55,6 +60,9 @@ export default function App() {
             onSave={handleSaveProject}
           />
         )}
+        {!addingProject && (currentProject != -1) && <ViewProject/>}
+        {!addingProject && (currentProject == -1) && <SelectOneProject onAddButtonClick={handleAddProject}/>}
+        
       </div>
     </>
   );
