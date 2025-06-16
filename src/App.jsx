@@ -29,7 +29,7 @@ export default function App() {
         dueDate,
         dateCreated: getDateParts().date,
         key: projects.length,
-        tasks: [],
+        tasks: ["Add Task Here"],
       });
       return tempProjects;
     });

@@ -33,18 +33,19 @@ export default function ViewProject({
       <hr className="separator" />
 
       <h1>Tasks</h1>
-      <div className="flex-start gap tasks">
+      <form
+        onSubmit={(e) => {
+            e.preventDefault();
+          if (task != "") handleAddingTasks(task);
+          setTask(() => "");
+        }}
+        className="flex-start gap tasks"
+      >
         <input type="text" onChange={handleTaskInput} value={task} />
-        <button
-          className="buttonWithoutBG juslighttext"
-          onClick={() => {
-            setTask("");
-            handleAddingTasks(task);
-          }}
-        >
+        <button className="buttonWithoutBG juslighttext" type="submit">
           Add Task
         </button>
-      </div>
+      </form>
       <div className="taskbody">
         <ul>
           {project.tasks.map((taskValue, index) => {
@@ -55,14 +56,6 @@ export default function ViewProject({
               </li>
             );
           })}
-          <li>
-            <p>Task 1</p>
-            <button className="buttonWithoutBG juslighttext">Clear</button>
-          </li>
-          <li>
-            <p>Task 2</p>
-            <button className="buttonWithoutBG juslighttext">Clear</button>
-          </li>
         </ul>
       </div>
     </div>
