@@ -3,13 +3,25 @@ import Sidebar from "./components/Sidebar.jsx";
 import AddProject from "./components/AddProject.jsx";
 import ViewProject from "./components/ViewProject.jsx";
 import SelectOneProject from "./components/SelectOneProject.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
   const [projects, setProjects] = useState([]);
   const [addingProject, setAddingProject] = useState(false);
   const [currentProject, setCurrentProject] = useState(-1);
   const [isEditing, setIsEditing] = useState(false);
+
+
+  useEffect(() => {
+    const savedProjects = localStorage.getItem("projects");
+    if (savedProjects) {
+      setProjects(JSON.parse(savedProjects));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects])
 
   function handleProjectEditing(editValues) {
     setProjects((prevProjects) => {
