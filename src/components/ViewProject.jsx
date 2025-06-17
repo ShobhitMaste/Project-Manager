@@ -31,6 +31,12 @@ export default function ViewProject({
     })
   }
 
+  function confirmProjectDeletion(){
+    if(confirm("Are you Sure?")){
+      handleProjectDelete(activeProject)
+    }
+  }
+
   return (
     <div
       className={`projectbody flex-col ${isEditing ? "margin-top" : undefined}`}
@@ -51,7 +57,7 @@ export default function ViewProject({
           {!isEditing && (
             <button
               className="buttonWithoutBG margin-right-0"
-              onClick={() => handleProjectDelete(activeProject)}
+              onClick={confirmProjectDeletion}
             >
               Delete
             </button>
