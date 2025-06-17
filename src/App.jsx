@@ -9,10 +9,28 @@ export default function App() {
   const [projects, setProjects] = useState([]);
   const [addingProject, setAddingProject] = useState(false);
   const [currentProject, setCurrentProject] = useState(-1);
+  const [isEditing, setIsEditing] = useState(false);
 
+  function handleProjectEditing(editValues) {
+    setProjects((prevProjects) => {
+      const tempProjects = [...prevProjects];
+      tempProjects[currentProject].title = editValues.title;
+      tempProjects[currentProject].description = editValues.description;
+      tempProjects[currentProject].dueDate = editValues.dueDate;
+      return tempProjects;
+    });
+
+    setIsEditing(() => !isEditing);
+
+  }
+  
   function handleAddProject() {
-    setAddingProject(() => true);
-    setCurrentProject(() => -1);
+    if (isEditing) {
+      alert("save Draft or click Cancel");
+    } else {
+      setAddingProject(() => true);
+      setCurrentProject(() => -1);
+    }
   }
 
   function handleCancelAddingProject() {
@@ -38,7 +56,7 @@ export default function App() {
   }
 
   function handleProjectSelection(index) {
-    if (addingProject) {
+    if (addingProject || isEditing) {
       alert("save Draft or click Cancel");
     } else setCurrentProject(() => index);
   }
@@ -70,6 +88,15 @@ export default function App() {
     });
   }
 
+  function handleProjectDelete(index) {
+    setProjects((prevProjects) => {
+      const tempProjects = [...prevProjects];
+      tempProjects.splice(index, 1);
+      return tempProjects;
+    });
+    setCurrentProject(-1);
+  }
+
   return (
     <>
       <Navbar />
@@ -92,6 +119,9 @@ export default function App() {
             activeProject={currentProject}
             Projects={projects}
             handleTaskDeletion={handleTaskDeletion}
+            handleProjectDelete={handleProjectDelete}
+            isEditing={isEditing}
+            handleProjectEditing={handleProjectEditing}
           />
         )}
         {!addingProject && currentProject == -1 && (
