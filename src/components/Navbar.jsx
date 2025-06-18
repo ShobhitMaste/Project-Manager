@@ -7,9 +7,6 @@ export default function Navbar() {
             <div>
                 <h1>Project Manager</h1>
             </div>
-            <div>
-                <h2>Sign In</h2>
-            </div>
         </div>
     );
 }
